@@ -30,7 +30,7 @@ ip route add local 0.0.0.0/0 dev lo table 100
 ip rule add fwmark 1 lookup 100
  
 # mark packets with dst port = 80 (and use route table 100) nad redirect to Go http proxy listening on 127.0.0.1:8888
-iptables -t mangle -A PREROUTING -s 192.166.1.0/24 -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 8888 --on-ip 127.0.0.1
+iptables -t mangle -A PREROUTING -s 192.168.1.0/24 -p tcp --dport 80 -j TPROXY --tproxy-mark 0x1/0x1 --on-port 8888 --on-ip 127.0.0.1
 ```
 
 How tproxy works in details is described here:  
